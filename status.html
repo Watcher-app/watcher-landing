@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Status — Watcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<style>
+  .status-wrap { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  .status-banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 22px;
+    border-radius: 14px;
+    margin-bottom: 32px;
+    border: 1px solid var(--border);
+  }
+  .status-banner.ok { background: var(--live-soft); border-color: rgba(31,173,102,0.3); }
+  .status-banner.degraded { background: rgba(255, 184, 0, 0.12); border-color: rgba(255, 184, 0, 0.35); }
+  .status-banner.down { background: rgba(230, 60, 60, 0.1); border-color: rgba(230, 60, 60, 0.3); }
+  .status-banner.unknown { background: var(--bg); }
+
+  .status-icon { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+  .status-banner.ok .status-icon { background: var(--live); box-shadow: 0 0 0 5px var(--live-soft); }
+  .status-banner.degraded .status-icon { background: #E6A800; box-shadow: 0 0 0 5px rgba(255,184,0,0.15); }
+  .status-banner.down .status-icon { background: #E63C3C; box-shadow: 0 0 0 5px rgba(230,60,60,0.15); }
+  .status-banner.unknown .status-icon { background: var(--muted); }
+
+  .status-banner h2 { font-size: 18px; margin-bottom: 2px; }
+  .status-banner p { margin: 0; font-size: 13px; }
+
+  .status-components { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 40px; }
+  .status-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 20px; background: var(--surface);
+  }
+  .status-row + .status-row { border-top: 1px solid var(--border); }
+  .status-row span:first-child { font-size: 14px; font-weight: 500; }
+  .status-row-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .status-row-badge.ok { background: var(--live-soft); color: var(--live); }
+  .status-row-badge.degraded { background: rgba(255,184,0,0.15); color: #B07D00; }
+  .status-row-badge.down { background: rgba(230,60,60,0.12); color: #C53030; }
+  .status-row-badge.unknown { background: var(--bg); color: var(--muted); }
+
+  .status-meta { font-size: 12px; color: var(--muted); margin-bottom: 40px; font-family: 'JetBrains Mono', monospace; }
+
+  .incident-list { display: flex; flex-direction: column; gap: 14px; }
+  .incident {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    background: var(--bg);
+  }
+  .incident-date { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .incident h3 { font-size: 15px; margin-bottom: 6px; }
+  .incident p { font-size: 13px; margin: 0; }
+  .empty-state { font-size: 14px; color: var(--muted); padding: 20px 0; }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><img src="logo.svg" alt="" class="nav-logo-icon" />Watcher</a></div></nav>
+
+<div class="status-wrap">
+  <span class="eyebrow">status systemu</span>
+  <h1 style="font-size:30px; margin-bottom:24px;">Czy Watcher działa poprawnie?</h1>
+
+  <div class="status-banner unknown" id="overall-banner">
+    <span class="status-icon"></span>
+    <div>
+      <h2 id="overall-title">Sprawdzam status…</h2>
+      <p id="overall-sub">Łączę się z systemem monitorowania.</p>
+    </div>
+  </div>
+
+  <div class="status-components">
+    <div class="status-row">
+      <span>Wykrywanie nowych ogłoszeń</span>
+      <span class="status-row-badge unknown" id="badge-scraper">—</span>
+    </div>
+    <div class="status-row">
+      <span>Dostarczanie powiadomień (Telegram)</span>
+      <span class="status-row-badge unknown" id="badge-telegram">—</span>
+    </div>
+    <div class="status-row">
+      <span>Panel / dashboard</span>
+      <span class="status-row-badge unknown" id="badge-dashboard">—</span>
+    </div>
+  </div>
+
+  <p class="status-meta" id="last-check">Ostatnia aktualizacja: —</p>
+
+  <h2 style="font-size:20px; margin-bottom:16px;">Historia incydentów</h2>
+  <div class="incident-list" id="incident-list">
+    <p class="empty-state">Wczytuję historię…</p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="status.js"></script>
+</body>
+</html>

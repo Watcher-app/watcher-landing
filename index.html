@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Watcher — bądź pierwszy przy nowych ogłoszeniach na OLX</title>
+<meta name="description" content="Watcher monitoruje wybrane wyszukiwania na OLX i wysyła powiadomienie na Telegram, gdy pojawi się nowe ogłoszenie." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.svg" alt="" class="nav-logo-icon" />Watcher</a>
+    <div class="nav-links">
+      <a href="#dla-kogo">Dla kogo</a>
+      <a href="#jak-dziala">Jak działa</a>
+      <a href="#cennik">Cennik</a>
+      <a href="#faq">FAQ</a>
+      <a href="status.html">Status</a>
+    </div>
+    <a href="#zapis" class="btn btn-primary btn-small">Zapisz się</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="eyebrow">stacja namierzania ogłoszeń</span>
+      <h1>Bądź pierwszy,<br>gdy pojawi się <span class="accent">okazja</span>.</h1>
+      <p class="hero-sub">Watcher monitoruje wybrane wyszukiwania na OLX i wysyła powiadomienie na Telegram w chwili, gdy pojawi się nowe ogłoszenie — z tytułem, ceną i linkiem.</p>
+      <form class="hero-form" id="waitlist-form-hero">
+        <input type="email" name="email" placeholder="twoj@email.pl" required />
+        <button type="submit" class="btn btn-primary">Zapisz się do testów</button>
+      </form>
+      <p class="hero-note">Zero spamu — piszę tylko, gdy Watcher będzie gotowy do testów.</p>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="phone-mock">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="lockscreen-time">9:41</div>
+          <div class="lockscreen-date">Wtorek, 24 czerwca</div>
+          <div class="notification">
+            <div class="notification-icon">W</div>
+            <div class="notification-body">
+              <div class="notification-top">
+                <span class="notification-app">Telegram</span>
+                <span class="notification-time">teraz</span>
+              </div>
+              <div class="notification-title">Watcher Bot</div>
+              <div class="notification-text">🆕 Nowe ogłoszenie!<br>📌 Kawalerka, Centrum<br>💰 1 800 zł</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-mock">
+        <div class="dash-window-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="dash-body">
+          <div class="dash-head">
+            <span class="dash-eyebrow">stacja namierzania ogłoszeń</span>
+            <span class="status-pill is-live"><span class="pulse-dot"></span>Aktywne</span>
+          </div>
+          <div class="dash-tiles">
+            <div class="dash-tile"><span>Namierzone</span><strong>247</strong></div>
+            <div class="dash-tile dash-tile-accent"><span>Dzisiaj</span><strong>12</strong></div>
+            <div class="dash-tile"><span>Co</span><strong>4 min</strong></div>
+          </div>
+          <div class="dash-gallery">
+            <div class="dash-card"><div class="dash-thumb thumb-1"></div><div><b>Pompa do basenu</b><span>320 zł</span></div></div>
+            <div class="dash-card"><div class="dash-thumb thumb-2"></div><div><b>Rower szosowy</b><span>450 zł</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="dla-kogo">
+  <div class="section-inner">
+    <span class="eyebrow">dla kogo</span>
+    <h2>Tam, gdzie liczą się sekundy.</h2>
+    <p class="lead">Niektóre kategorie na OLX rozchodzą się szybciej niż inne. Jeśli szukasz w jednej z nich, ręczne odświeżanie to przegrana walka.</p>
+
+    <div class="usecase-carousel">
+      <div class="usecase-card">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" alt="Mieszkanie do wynajęcia" loading="lazy" />
+        <div class="usecase-info">
+          <h3>Mieszkania i kawalerki</h3>
+          <p>Dobre oferty wynajmu w atrakcyjnej cenie znikają w kilkanaście minut od publikacji.</p>
+        </div>
+      </div>
+      <div class="usecase-card">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="Działka budowlana" loading="lazy" />
+        <div class="usecase-info">
+          <h3>Działki</h3>
+          <p>Atrakcyjne grunty w dobrej lokalizacji rzadko trafiają się dwa razy.</p>
+        </div>
+      </div>
+      <div class="usecase-card">
+        <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?w=600&q=80" alt="Rozmowa o pracę" loading="lazy" />
+        <div class="usecase-info">
+          <h3>Oferty pracy</h3>
+          <p>Najlepsze ogłoszenia rekrutacyjne zbierają komplet zgłoszeń tego samego dnia.</p>
+        </div>
+      </div>
+      <div class="usecase-card">
+        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=80" alt="Samochód używany" loading="lazy" />
+        <div class="usecase-info">
+          <h3>Samochody</h3>
+          <p>Auta w dobrej cenie i niskim przebiegu sprzedają się tego samego dnia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="jak-dziala">
+  <div class="section-inner">
+    <span class="eyebrow">jak to działa</span>
+    <h2>Trzy kroki, bez technicznej wiedzy.</h2>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3>Wklej link wyszukiwania</h3>
+        <p>Ustaw filtry na OLX tak, jak normalnie szukasz — kategoria, lokalizacja, słowo kluczowe — i wklej adres do panelu Watchera.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3>Połącz Telegram jednym kliknięciem</h3>
+        <p>Klikasz "Połącz Telegram", potwierdzasz w aplikacji — gotowe. Nie zakładasz własnego bota, nie kopiujesz żadnych kodów.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3>Odbieraj namierzenia</h3>
+        <p>Gdy pojawi się nowe ogłoszenie, dostajesz wiadomość z tytułem, ceną i linkiem. Klikasz i jesteś pierwszy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cennik">
+  <div class="section-inner">
+    <span class="eyebrow">cennik</span>
+    <h2>Zacznij bezpłatnie. Płać tylko za więcej.</h2>
+    <p class="lead">Jedno śledzone wyszukiwanie wystarczy większości osób. Jeśli polujesz na więcej kategorii naraz — Pro daje Ci więcej zasięgu za małe pieniądze.</p>
+
+    <div class="pricing">
+      <div class="price-card">
+        <span class="price-name">Free</span>
+        <span class="price-value">0 zł<small>/zawsze</small></span>
+        <ul class="price-features">
+          <li>1 monitorowane wyszukiwanie</li>
+          <li>Sprawdzanie co 15 minut</li>
+          <li>Powiadomienia na Telegram</li>
+          <li>Galeria ostatnich 8 namierzeń</li>
+        </ul>
+        <a href="#zapis" class="btn btn-secondary">Zapisz się na Free</a>
+      </div>
+
+      <div class="price-card price-card-featured">
+        <span class="price-badge">Najpopularniejszy</span>
+        <span class="price-name">Pro</span>
+        <span class="price-value">20 zł<small>/miesiąc</small></span>
+        <ul class="price-features">
+          <li>Do 5 monitorowanych wyszukiwań naraz</li>
+          <li>Sprawdzanie co 4 minuty</li>
+          <li>Filtry cenowe i słowa wykluczające</li>
+          <li>Nielimitowana galeria namierzeń</li>
+          <li>Powiadomienia na Telegram</li>
+        </ul>
+        <a href="#zapis" class="btn btn-primary">Zapisz się na Pro</a>
+      </div>
+    </div>
+
+    <p class="pricing-note">Subskrypcja Pro jest rozliczana miesięcznie. Jeśli usługa przestanie działać z przyczyn niezależnych od Watchera (np. zmian na OLX) w trakcie okresu rozliczeniowego, zwracam proporcjonalną część opłaty za niewykorzystany czas. Szczegóły w regulaminie.</p>
+  </div>
+</section>
+
+<section class="section section-alt" id="faq">
+  <div class="section-inner">
+    <span class="eyebrow">faq</span>
+    <h2>Najczęstsze pytania.</h2>
+
+    <div class="faq-list">
+      <details>
+        <summary>Czy muszę mieć zainstalowaną aplikację OLX?</summary>
+        <p>Nie. Watcher działa niezależnie od aplikacji OLX i nie loguje się na Twoje konto — wystarczy publiczny link do wyników wyszukiwania. Jedyna aplikacja, którą potrzebujesz na telefonie, to <strong>Telegram</strong> — tam trafiają wszystkie powiadomienia.</p>
+      </details>
+      <details>
+        <summary>Czy to legalne?</summary>
+        <p>Watcher korzysta z publicznie dostępnych stron wyników wyszukiwania, automatyzując proces, który mógłbyś wykonać ręcznie, odświeżając stronę. To narzędzie do użytku osobistego. Nie gwarantuję nieprzerwanego działania — jeśli OLX zmieni sposób udostępniania danych, usługa może wymagać poprawek lub czasowo nie działać.</p>
+      </details>
+      <details>
+        <summary>Jak szybko przychodzą powiadomienia?</summary>
+        <p>W wersji Free co 15 minut, w wersji Pro co 4 minuty. To realne odstępy sprawdzania — nie obiecuję sekund, bo to po prostu nie byłaby prawda.</p>
+      </details>
+      <details>
+        <summary>Co się stanie, jeśli OLX zmieni stronę i Watcher przestanie działać?</summary>
+        <p>Staram się reagować na zmiany jak najszybciej. Jeśli usługa nie będzie działać przez dłuższy czas w trakcie opłaconego okresu, zwracam proporcjonalną część wpłaty za niewykorzystany czas — zgodnie z regulaminem.</p>
+      </details>
+      <details>
+        <summary>Czy mogę zrezygnować w każdej chwili?</summary>
+        <p>Tak, subskrypcję Pro możesz wyłączyć w każdej chwili z panelu — nie płacisz za kolejny okres rozliczeniowy.</p>
+      </details>
+      <details>
+        <summary>Kto stoi za Watcherem?</summary>
+        <p>To projekt jednoosobowy — budowany i prowadzony przez jedną osobę, nie przez zespół czy firmę. Dzięki temu cennik jest niski i przejrzysty.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section" id="zapis">
+  <div class="section-inner cta-inner">
+    <span class="eyebrow">wczesny dostęp</span>
+    <h2>Zapisz się, zanim ruszę.</h2>
+    <p class="lead">Buduję Watchera jako samodzielną aplikację. Zapisz się, żeby dostać dostęp jako jeden z pierwszych testerów — i pomóż mi zdecydować, co jest najważniejsze. Żadnego spamu — tylko informacja, gdy będzie gotowe.</p>
+
+    <form class="cta-form" id="waitlist-form-main">
+      <input type="email" name="email" placeholder="twoj@email.pl" required />
+      <button type="submit" class="btn btn-primary">Zapisz się</button>
+    </form>
+    <p class="form-status" id="form-status"></p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span>Watcher — narzędzie nieoficjalne, niezwiązane z OLX.pl</span>
+    <div class="footer-links">
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+      <a href="regulamin.html">Regulamin</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+</body>
+</html>
