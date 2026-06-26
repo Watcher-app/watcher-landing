@@ -436,7 +436,7 @@ a { color: inherit; text-decoration: none; }
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   max-width: 720px;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
 }
 @media (max-width: 700px) { .pricing { grid-template-columns: 1fr; } }
 
@@ -485,7 +485,7 @@ a { color: inherit; text-decoration: none; }
 }
 .price-card .btn { width: 100%; }
 
-.pricing-note { font-size: 13px; color: var(--muted); max-width: 640px; }
+.pricing-note { font-size: 13px; color: var(--muted); max-width: 640px; margin: 0 auto; text-align: center; }
 
 /* FAQ */
 
