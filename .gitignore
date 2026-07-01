@@ -1,0 +1,17 @@
+# Zmienne środowiskowe — nigdy nie wrzucaj na GitHub
+.env
+.env.local
+.env.development
+.env.production
+.env*.local
+
+# System macOS — śmieciowe pliki które Mac tworzy automatycznie
+.DS_Store
+**/.DS_Store
+
+# Edytory kodu
+.vscode/
+.idea/
+
+# Logi
+*.log
