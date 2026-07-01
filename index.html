@@ -34,7 +34,7 @@
       <h1>Bądź pierwszy,<br>gdy pojawi się <span class="accent">okazja</span>.</h1>
       <p class="hero-sub">Watcher monitoruje wybrane wyszukiwania na OLX i wysyła powiadomienie na Telegram w chwili, gdy pojawi się nowe ogłoszenie — z tytułem, ceną i linkiem.</p>
       <form class="hero-form" id="waitlist-form-hero">
-        <input type="email" name="email" placeholder="twoj@email.pl" required />
+        <input type="email" name="email" placeholder="adres e-mail" required autocomplete="email" />
         <button type="submit" class="btn btn-primary">Zapisz się do testów</button>
       </form>
       <p class="hero-note">Zero spamu — piszę tylko, gdy Watcher będzie gotowy do testów.</p>
@@ -227,7 +227,7 @@
     <p class="lead">Buduję Watchera jako samodzielną aplikację. Zapisz się, żeby dostać dostęp jako jeden z pierwszych testerów — i pomóż mi zdecydować, co jest najważniejsze. Żadnego spamu — tylko informacja, gdy będzie gotowe.</p>
 
     <form class="cta-form" id="waitlist-form-main">
-      <input type="email" name="email" placeholder="twoj@email.pl" required />
+      <input type="email" name="email" placeholder="adres e-mail" required autocomplete="email" />
       <button type="submit" class="btn btn-primary">Zapisz się</button>
     </form>
     <p class="form-status" id="form-status"></p>
@@ -238,14 +238,17 @@
   <div class="footer-inner">
     <span>Watcher — narzędzie nieoficjalne, niezwiązane z OLX.pl</span>
     <div class="footer-links">
-      <a href="mailto:kontakt.watcher@gmail.com">Kontakt</a>
+      <a href="#" id="contact-link">Kontakt</a>
       <a href="polityka-prywatnosci.html">Polityka prywatności</a>
       <a href="regulamin.html">Regulamin</a>
     </div>
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"
+  integrity="sha384-7s/MdoORnBDapCLSXmGPaHBBqpMHDDIoBPFLMBxH0a8dEQQRKpNEbPDFBZTdPFR7"
+  crossorigin="anonymous"></script>
 <script src="app.js"></script>
 </body>
 </html>
